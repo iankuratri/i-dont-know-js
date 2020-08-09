@@ -28,7 +28,7 @@ const user = {
 };
 
 /**
- * Problem: Flat user (any n level nested) object using recursion, so that finalObj will have keys and values like,
+ * Problem: Flat user (any n level nested) object using recursive traversal, so that finalObj will have keys and values like,
  * user_id: 1
  * user_address_street: Kulas Light
  * user_address_geo_lat: -37.3159
@@ -37,11 +37,12 @@ const user = {
 const flattenObj = (obj, parent, finalObj) => {
   for (let key in obj) {
     const newParent = `${parent}_${key}`;
+    const value = obj[key];
 
-    if (typeof obj[key] === "object") {
-      flattenObj(obj[key], newParent, finalObj);
+    if (typeof value === "object") {
+      flattenObj(value, newParent, finalObj);
     } else {
-      finalObj[newParent] = obj[key];
+      finalObj[newParent] = value;
     }
   }
 };
