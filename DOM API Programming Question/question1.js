@@ -27,7 +27,7 @@
 const INDENT_SIZE = 2;
 
 const getSpaces = (length) => {
-  return new Array(length).fill(" ").join("");
+  return " ".repeat(length);
 };
 
 class Node {
