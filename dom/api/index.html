@@ -5,7 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>The DOM API's</title>
   </head>
+
+  <style>
+    img {
+      transition: all 0.2s;
+    }
+
+    .clickable {
+      cursor: pointer;
+    }
+
+    .round {
+      border-radius: 50%;
+      transform: rotate(1turn) scale(0.75);
+    }
+  </style>
   <body>
+    <img
+      class="myImage"
+      src="https://source.unsplash.com/random/500x500"
+      alt="random_img"
+    />
     <div>
       <h1 id="myFirstHeading">I am a heading 1.</h1>
       <p>

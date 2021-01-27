@@ -1,11 +1,17 @@
-function init() {
-  // selecting elements - you can use css selectors in function argument
+function selectingElements() {
+  /**
+   * selecting elements - you can use css selectors in function argument
+   */
   const p = document.querySelector("p");
   const divs = document.querySelectorAll("div");
   console.log(p);
   console.log(divs);
+}
 
-  // element properties and methods
+function elementPropertiesMethods() {
+  /**
+   * element properties and methods
+   */
   const myFirstHeading = document.querySelector("#myFirstHeading");
   console.dir(myFirstHeading);
 
@@ -37,4 +43,27 @@ function init() {
   myFirstHeading.before(beforeHeadingEl);
 }
 
-window.addEventListener("DOMContentLoaded", init);
+function workingWithClasses() {
+  /**
+   * working with classes
+   */
+  const myImage = document.querySelector(".myImage");
+
+  // classList API to remove and add classes
+  myImage.classList.add("clickable");
+  // myImage.classList.remove("clickable")
+  console.log(myImage.className);
+  console.log(myImage.classList.contains("clickable"));
+
+  // replace class "foo" with class "bar"
+  // div.classList.replace("foo", "bar");
+
+  function toggleRound() {
+    // if "round" is set remove it, otherwise add it
+    myImage.classList.toggle("round");
+  }
+
+  myImage.addEventListener("click", toggleRound);
+}
+
+window.addEventListener("DOMContentLoaded", workingWithClasses);
