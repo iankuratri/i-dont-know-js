@@ -66,4 +66,30 @@ function workingWithClasses() {
   myImage.addEventListener("click", toggleRound);
 }
 
-window.addEventListener("DOMContentLoaded", workingWithClasses);
+function builtInAndCustomAttributes() {
+  /**
+   * Build in and Custom data attributes
+   */
+  const myImage = document.querySelector(".myImage");
+
+  // myImage.width = 100
+
+  myImage.alt = "random img"; // setter
+  console.log(myImage.alt); // getter
+
+  // naturalWidth - only available after image is loaded
+  myImage.addEventListener("load", () => {
+    console.log(myImage.naturalWidth);
+  });
+
+  // custom data attributes
+  myImage.setAttribute("data-name", "I am Ankur");
+  console.log(myImage.getAttribute("data-name"));
+  console.log(myImage.hasAttribute("data-name"));
+
+  myImage.setAttribute("data-age", "25");
+
+  console.log(myImage.dataset);
+}
+
+window.addEventListener("DOMContentLoaded", builtInAndCustomAttributes);
