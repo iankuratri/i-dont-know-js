@@ -92,4 +92,28 @@ function builtInAndCustomAttributes() {
   console.log(myImage.dataset);
 }
 
-window.addEventListener("DOMContentLoaded", builtInAndCustomAttributes);
+function creatingHTML() {
+  /**
+   * Creating HTML using JS
+   */
+  const myDiv = document.createElement("div");
+  myDiv.classList.add("lightblue-bg");
+  console.log(myDiv);
+
+  const myPara = document.createElement("p");
+  myPara.innerText = "This paragraph is created using JS.";
+  console.log(myPara);
+
+  const myImage = document.createElement("img");
+  myImage.src = "https://source.unsplash.com/random/400x400";
+  myImage.alt = "unsplash random img";
+  console.log(myImage);
+
+  myDiv.appendChild(myPara);
+  myDiv.appendChild(myImage);
+  console.log(myDiv);
+
+  document.body.appendChild(myDiv);
+}
+
+window.addEventListener("DOMContentLoaded", creatingHTML);
