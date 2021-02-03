@@ -116,4 +116,58 @@ function creatingHTML() {
   document.body.appendChild(myDiv);
 }
 
-window.addEventListener("DOMContentLoaded", creatingHTML);
+function htmlFromStrings() {
+  /**
+   * HTML from Strings and XSS
+   */
+  const headingContainer = document.querySelector("#headingContainer");
+
+  const width = 600;
+  const height = 600;
+  const src = `https://source.unsplash.com/random/${width}x${height}`;
+  const desc = "Unsplash Random";
+  const myHTML = `
+    <div class="wrapper">
+      <h2>${desc} Image</h2>
+      <img src="${src}" alt="${desc}"/>
+    </div>
+  `;
+  console.log(myHTML);
+
+  headingContainer.innerHTML = myHTML;
+
+  // cannot manipulate image in above string before adding it to DOM
+  const wrapperImage = document.querySelector(".wrapper img");
+  wrapperImage.classList.add("round");
+
+  // turn a string into a DOM Element
+  const myFragment = document.createRange().createContextualFragment(myHTML);
+  console.log(myFragment);
+
+  const wrapperImage2 = myFragment.querySelector("img");
+  wrapperImage2.classList.add("round");
+  console.log(wrapperImage2);
+
+  document.body.appendChild(myFragment);
+}
+
+function traversingAndRemovingNodes() {
+  /**
+   * Traversing And Removing Nodes
+   */
+
+  const myFirstContainer = document.querySelector("#myFirstContainer");
+
+  // traversing
+  console.log(myFirstContainer.children);
+  console.log(myFirstContainer.firstElementChild);
+  console.log(myFirstContainer.lastElementChild);
+  console.log(myFirstContainer.previousElementSibling);
+  console.log(myFirstContainer.nextElementSibling);
+  console.log(myFirstContainer.parentElement);
+
+  // removing
+  myFirstContainer.remove();
+}
+
+window.addEventListener("DOMContentLoaded", traversingAndRemovingNodes);
