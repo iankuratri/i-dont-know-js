@@ -159,12 +159,18 @@ function traversingAndRemovingNodes() {
   const myFirstContainer = document.querySelector("#myFirstContainer");
 
   // traversing
-  console.log(myFirstContainer.children);
-  console.log(myFirstContainer.firstElementChild);
-  console.log(myFirstContainer.lastElementChild);
-  console.log(myFirstContainer.previousElementSibling);
-  console.log(myFirstContainer.nextElementSibling);
-  console.log(myFirstContainer.parentElement);
+  console.log("children: ", myFirstContainer.children);
+  console.log("firstElementChild: ", myFirstContainer.firstElementChild);
+  console.log("lastElementChild: ", myFirstContainer.lastElementChild);
+  console.log(
+    "previousElementSibling: ",
+    myFirstContainer.previousElementSibling
+  );
+  console.log("nextElementSibling: ", myFirstContainer.nextElementSibling);
+  console.log("parentElement: ", myFirstContainer.parentElement);
+
+  const myFirstHeading = document.querySelector("#myFirstHeading");
+  console.log("closest: ", myFirstHeading.closest(".lightblue-bg"));
 
   // removing
   myFirstContainer.remove();
