@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event Targets</title>
+    <style>
+      .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .to-do {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        border: 1px solid lightgray;
+        border-radius: 10px;
+        padding: 5px 20px;
+        margin-bottom: 20px;
+        width: 500px;
+      }
+
+      .to-do > p {
+        margin-right: 30px;
+      }
+
+      .to-do > button {
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>To-Do App</h1>
+      <p id="loaderMessage">Loading to do list...</p>
+      <br />
+      <div id="toDoContainer"></div>
+    </div>
+
+    <script src="main.js"></script>
+  </body>
+</html>
