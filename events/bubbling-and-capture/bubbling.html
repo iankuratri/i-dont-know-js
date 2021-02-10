@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bubbling</title>
+
+    <style>
+      body * {
+        margin: 10px;
+        border: 1px solid blue;
+      }
+    </style>
+  </head>
+  <body onclick="alert(`the bubbling doesn't reach here`)">
+    <!-- P → DIV → FORM → BODY → HTML (bubbling phase) -->
+    <!-- use event.stopPropagation() to stop bubbling to parent element -->
+    <form onclick="event.stopPropagation()">
+      FORM
+      <div onclick="alert('Bubbling: DIV')">
+        DIV
+        <p onclick="alert('Bubbling: P')">P</p>
+      </div>
+    </form>
+  </body>
+</html>
