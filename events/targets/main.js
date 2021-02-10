@@ -44,7 +44,13 @@ function addToDoDeleteEventListner() {
 function handleDeleteToDo(event) {
   event.stopPropagation();
 
-  const { target, currentTarget } = event;
+  const { target, currentTarget, eventPhase } = event;
+
+  /**
+   * event.target – the deepest element that originated the event.
+   * event.currentTarget (=this) – the current element that handles the event (the one that has the handler on it)
+   * event.eventPhase – the current phase (capturing=1, target=2, bubbling=3).
+   */
 
   // element that is clicked
   console.log("target: ", target);
@@ -54,6 +60,8 @@ function handleDeleteToDo(event) {
 
   // target and currentTarget are same
   console.log("target and currentTarget are same", target === currentTarget);
+
+  console.log("eventPhase: ", eventPhase);
 
   const toDoToDelete = currentTarget.closest(".to-do");
   toDoToDelete.remove();
