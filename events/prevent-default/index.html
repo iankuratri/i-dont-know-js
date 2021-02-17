@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prevent Default</title>
+
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      input[type="text"],
+      select {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 16px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+      }
+
+      input[type="submit"] {
+        width: 100%;
+        background-color: #4caf50;
+        color: white;
+        padding: 14px 20px;
+        margin: 16px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+
+      input[type="submit"]:hover {
+        background-color: #45a049;
+      }
+
+      input[type="checkbox"] {
+        margin: 16px 0;
+      }
+
+      div {
+        border-radius: 5px;
+        background-color: #f2f2f2;
+        padding: 20px;
+        max-width: 500px;
+      }
+    </style>
+  </head>
+  <body>
+    <h3>HTML Form with Prevent Default</h3>
+
+    <div>
+      <form name="contactForm">
+        <label for="fname">First Name</label>
+        <input
+          type="text"
+          id="fname"
+          name="firstname"
+          placeholder="Your name.."
+          required
+        />
+
+        <label for="lname">Last Name</label>
+        <input
+          type="text"
+          id="lname"
+          name="lastname"
+          placeholder="Your last name.."
+          required
+        />
+
+        <label for="country">Country</label>
+        <select id="country" name="country" required>
+          <option value="australia">Australia</option>
+          <option value="canada">Canada</option>
+          <option value="usa">USA</option>
+        </select>
+
+        <input type="checkbox" id="terms" name="terms" required />
+        <label for="terms">
+          I agree with
+          <a href="http://example.com" id="termsLink" target="_blank"
+            >terms and conditions.</a
+          >
+        </label>
+
+        <input type="submit" value="Submit" />
+      </form>
+    </div>
+
+    <script>
+      const termsLinkEl = document.querySelector("#termsLink");
+      termsLinkEl.addEventListener("click", (event) => {
+        const shouldChangePage = confirm(
+          "You will be redirected to terms & conditions page. Do you want to proceed?"
+        );
+
+        if (!shouldChangePage) {
+          event.preventDefault();
+        }
+      });
+
+      const formEl = document.querySelector("form[name='contactForm']");
+      formEl.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        const { firstname, lastname, country, terms } = event.currentTarget;
+
+        const formValue = {
+          firstname: firstname.value,
+          lastname: lastname.value,
+          country: country.value,
+          terms: terms.checked,
+        };
+
+        console.log("FormValue: ", formValue);
+      });
+    </script>
+  </body>
+</html>
