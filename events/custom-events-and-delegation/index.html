@@ -76,6 +76,32 @@
     ul li {
       border-bottom: 1px solid #ccc;
       padding: 10px 20px;
+
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    /* ul li:last-child {
+      border: none;
+    } */
+
+    ul li div span {
+      margin: 0 10px;
+    }
+
+    ul li div input {
+      cursor: pointer;
+    }
+
+    ul li button {
+      background-color: #fd3e3e;
+      color: white;
+      padding: 5px 9px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
     }
   </style>
   <body>
@@ -83,20 +109,39 @@
       <div class="card">
         <h1 class="title">Shopping List</h1>
 
-        <form>
+        <form name="shopping">
           <input
             type="text"
             placeholder="Enter item name..."
             name="item"
             id="item"
+            required
           />
           <button type="submit">Add</button>
         </form>
 
-        <ul>
-          <li>Eggs</li>
-          <li>Milk</li>
-          <li>Butter</li>
+        <ul id="list">
+          <li>
+            <div>
+              <input type="checkbox" name="checkbox" id="checkbox1" />
+              <span>Eggs</span>
+            </div>
+            <button>x</button>
+          </li>
+          <li>
+            <div>
+              <input type="checkbox" name="checkbox" id="checkbox2" />
+              <span>Milk</span>
+            </div>
+            <button>x</button>
+          </li>
+          <li>
+            <div>
+              <input type="checkbox" name="checkbox" id="checkbox3" />
+              <span>Butter</span>
+            </div>
+            <button>x</button>
+          </li>
         </ul>
       </div>
     </section>
