@@ -83,10 +83,6 @@
       align-items: center;
     }
 
-    /* ul li:last-child {
-      border: none;
-    } */
-
     ul li div span {
       margin: 0 10px;
     }
@@ -95,10 +91,14 @@
       cursor: pointer;
     }
 
+    ul li div input[type="checkbox"]:checked + .itemName {
+      opacity: 0.5;
+    }
+
     ul li button {
       background-color: #fd3e3e;
       color: white;
-      padding: 5px 9px;
+      padding: 5px 7px;
       border: none;
       border-radius: 4px;
       cursor: pointer;
@@ -120,29 +120,7 @@
           <button type="submit">Add</button>
         </form>
 
-        <ul id="list">
-          <li>
-            <div>
-              <input type="checkbox" name="checkbox" id="checkbox1" />
-              <span>Eggs</span>
-            </div>
-            <button>x</button>
-          </li>
-          <li>
-            <div>
-              <input type="checkbox" name="checkbox" id="checkbox2" />
-              <span>Milk</span>
-            </div>
-            <button>x</button>
-          </li>
-          <li>
-            <div>
-              <input type="checkbox" name="checkbox" id="checkbox3" />
-              <span>Butter</span>
-            </div>
-            <button>x</button>
-          </li>
-        </ul>
+        <ul id="list"></ul>
       </div>
     </section>
 
