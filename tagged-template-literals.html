@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tagged Template Literals</title>
+    <style>
+      .yellow-bg {
+        background-color: yellow;
+      }
+    </style>
+  </head>
+  <body>
+    <h1></h1>
+    <p></p>
+
+    <script>
+      const heading = document.querySelector("h1");
+      const p = document.querySelector("p");
+
+      const name = "Ankur";
+      const age = 26;
+      const languages = {
+        HTML: "Hyper Text Markup Language",
+        CSS: "Cascading Style Sheets",
+        JS: "JavaScript",
+      };
+      const bio = highlight`My name is ${name} and I am ${age} years old.`;
+      const experience = abbreviate`I am a Frontend Developer and I know ${"HTML"}, ${"CSS"} and ${"JS"}.`;
+
+      function highlight(strings, ...values) {
+        const highlighted = strings.reduce((acc, curr, i) => {
+          return `${acc}${curr}<span class="yellow-bg">
+                ${values[i] || ""}
+                </span>`;
+        }, "");
+
+        heading.innerHTML = highlighted;
+      }
+
+      function abbreviate(strings, ...values) {
+        const abbreviated = strings.reduce((acc, curr, i) => {
+          return `${acc}${curr}<abbr title="${languages[values[i]] || ""}">
+            ${values[i] || ""}
+            </abbr>`;
+        }, "");
+
+        p.innerHTML = abbreviated;
+      }
+    </script>
+  </body>
+</html>
