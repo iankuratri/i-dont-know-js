@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Generators</title>
+  </head>
+  <body>
+    <h1>Generator for AJAX flow control</h1>
+    <script>
+      const apiEndPoint = "https://jsonplaceholder.typicode.com/";
+
+      function ajax(path) {
+        const apiUrl = apiEndPoint + path;
+
+        fetch(apiUrl)
+          .then((data) => data.json())
+          .then((data) => generateUserData.next(data))
+          .catch((err) => {
+            console.log("Error:", err.message);
+          });
+      }
+
+      function* userData() {
+        console.log("fetching users...");
+        const users = yield ajax("users");
+        console.log("users:", users);
+
+        console.log("fetching todos...");
+        const todos = yield ajax("todos");
+        console.log("todos:", todos);
+
+        console.log("fetching posts...");
+        const posts = yield ajax("posts");
+        console.log("posts:", posts);
+      }
+
+      const generateUserData = userData();
+      generateUserData.next();
+    </script>
+  </body>
+</html>
