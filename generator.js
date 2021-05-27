@@ -56,10 +56,17 @@ console.log(sequence.next());
  * We can loop over their values using for..of:
  */
 
-const generator = generateSequence();
+function* lyrics() {
+  yield "Found you when your heart was broke";
+  yield "I filled your cup until it overflowed";
+  yield "Took it so far to keep you close (keep you close)";
+  yield "I was afraid to leave you on your own";
+}
 
-for (let value of generator) {
-  console.log(value); // 1, then 2
+const sing = lyrics();
+
+for (let line of sing) {
+  console.log(line);
 }
 
 /**
