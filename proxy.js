@@ -25,9 +25,9 @@ const person = { name: "ankur", age: 26 };
  */
 
 const personProxy = new Proxy(person, {
-  get(target, key) {
-    if (key === "name") {
-      return target["name"].toUpperCase();
+  get(target, prop) {
+    if (prop === "name") {
+      return target[prop].toUpperCase();
     }
 
     // With the help of the Reflect class we can give some
@@ -35,12 +35,12 @@ const personProxy = new Proxy(person, {
     return Reflect.get(...arguments);
   },
 
-  set(target, key, newValue) {
-    if (key === "age") {
-      if (typeof newValue !== "number") {
-        throw new Error(`${key} can only be a number.`);
+  set(target, prop, receiver) {
+    if (prop === "age") {
+      if (typeof receiver !== "number") {
+        throw new Error(`${prop} can only be a number.`);
       } else {
-        target[key] = newValue;
+        target[prop] = receiver;
       }
     }
 
