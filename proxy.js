@@ -24,7 +24,7 @@ const person = { name: "ankur", age: 26 };
  * set trap for writing a property into target, and so on.
  */
 
-const personProxy = new Proxy(person, {
+const handler = {
   get(target, prop) {
     if (prop === "name") {
       return target[prop].toUpperCase();
@@ -48,7 +48,9 @@ const personProxy = new Proxy(person, {
     // accessors the original behavior and redefine others:
     return Reflect.set(...arguments);
   },
-});
+};
+
+const personProxy = new Proxy(person, handler);
 
 console.log("PersonProxy: ", personProxy);
 
