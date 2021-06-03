@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WeakSet</title>
+  </head>
+  <body>
+    <h1>Check console for WeakSet examples</h1>
+    <script>
+      /**
+       * WeakSet
+       *
+       * The WeakSet object lets you store weakly held objects in a collection.
+       *
+       * WeakSet objects are collections of objects. Just as with Sets, each object
+       * in a WeakSet may occur only once; all objects in a WeakSet's collection are unique.
+       */
+
+      /**
+       * The main differences to the Set object are:
+       *
+       * WeakSets are collections of objects only. They cannot contain arbitrary values of any type, as Sets can.
+       *
+       * The WeakSet is weak, meaning references to objects in a WeakSet are held weakly.
+       * If no other references to an object stored in the WeakSet exist, those objects can be garbage collected.
+       *
+       * WeakSets are not enumerable/iterable.
+       *
+       * Like Set, it supports add, has and delete, but not size, keys() and no iterations.
+       */
+
+      let visitedSet = new WeakSet();
+
+      let john = { name: "John" };
+      let pete = { name: "Pete" };
+      let mary = { name: "Mary" };
+
+      visitedSet.add(john); // John visited us
+      visitedSet.add(pete); // Then Pete
+      visitedSet.add(mary); // Then mary
+
+      // visitedSet has 3 users now
+      console.log(visitedSet);
+
+      // check if John visited?
+      console.log(visitedSet.has(john)); // true
+
+      john = null;
+      // john will be cleaned from visitedSet automatically
+
+      console.log(visitedSet);
+    </script>
+  </body>
+</html>
