@@ -36,16 +36,10 @@ const handler = {
   },
 
   set(target, prop, receiver) {
-    if (prop === "age") {
-      if (typeof receiver !== "number") {
-        throw new Error(`${prop} can only be a number.`);
-      } else {
-        target[prop] = receiver;
-      }
+    if (prop === "age" && typeof receiver !== "number") {
+      throw new Error(`'${prop}' can only be a number.`);
     }
 
-    // With the help of the Reflect class we can give some
-    // accessors the original behavior and redefine others:
     return Reflect.set(...arguments);
   },
 };
@@ -57,7 +51,41 @@ console.log("PersonProxy: ", personProxy);
 // getting name
 console.log("PersonProxy Uppercase Name: ", personProxy.name);
 
+// throws error
+// personProxy.age = "27";
+
 // setting age
 personProxy.age = 27;
 
 console.log("PersonProxy Updated Age: ", personProxy.age);
+
+/**
+ * Using Proxies to combat silly errors
+ */
+
+const cafeLocation = { long: 1234436, lat: 0908509 };
+
+const safeHandler = {
+  set(target, prop, receiver) {
+    const likeKey = Object.keys(target).find(
+      (key) => key.toLowerCase() === prop.toLowerCase()
+    );
+
+    if (!(prop in target) && likeKey) {
+      throw new Error(
+        `Oops! Looks like we already have a(n) '${prop}' property but with the case of '${likeKey}'.`
+      );
+    }
+
+    return Reflect.set(...arguments);
+  },
+};
+
+const saftey = new Proxy(cafeLocation, safeHandler);
+
+// throws error
+// saftey.Long = 1038203;
+
+saftey.long = 111111;
+
+console.log("Safety: ", saftey);
