@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WeakMap</title>
+  </head>
+  <body>
+    <h1>Check console for WeakMap examples</h1>
+
+    <script>
+      /**
+       * WeakMap
+       *
+       * The WeakMap object is a collection of key/value pairs in which the keys are weakly
+       * referenced. The keys must be objects and the values can be arbitrary values.
+       *
+       * The first difference between Map and WeakMap is that keys must be objects, not primitive values:
+       *
+       * Because the references are weak, WeakMap keys are not enumerable.
+       *
+       * WeakMap does not support iteration and methods keys(), values(), entries(),
+       * so there’s no way to get all keys or values from it.
+       *
+       * WeakMap has only the following methods:
+       *
+       * weakMap.get(key)
+       * weakMap.set(key, value)
+       * weakMap.delete(key)
+       * weakMap.has(key)
+       *
+       */
+
+      let john = { name: "John" };
+      let tom = { name: "Tom" };
+
+      let weakMap = new WeakMap();
+
+      /**
+       * Now, if we use an object as the key in it, and there are no other references
+       * to that object – it will be removed from memory (and from the map) automatically.
+       */
+
+      weakMap.set(john, "jhon");
+      weakMap.set(tom, "tom");
+
+      console.log(weakMap);
+
+      john = null; // overwrite the reference
+      // john is removed from memory!
+
+      console.log(weakMap);
+    </script>
+  </body>
+</html>
