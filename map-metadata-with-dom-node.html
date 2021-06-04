@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Map metadata with DOM Node Keys</title>
+
+    <style>
+      button {
+        padding: 10px;
+        font-size: 20px;
+        margin: 10px;
+        cursor: pointer;
+        position: relative;
+        display: inline-block;
+      }
+
+      button .badge {
+        position: absolute;
+        top: -15px;
+        right: -15px;
+        padding: 7px 10px;
+        border-radius: 20px;
+        background-color: grey;
+        color: white;
+        font-size: 10px;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <button>
+      <span>Like 👍</span>
+      <span class="badge">0</span>
+    </button>
+    <button>
+      <span>Share 🔗</span>
+      <span class="badge">0</span>
+    </button>
+    <button>
+      <span>Retweet 🐦</span>
+      <span class="badge">0</span>
+    </button>
+
+    <script>
+      const clickCounts = new Map();
+      const buttons = document.querySelectorAll("button");
+
+      buttons.forEach((button) => {
+        clickCounts.set(button, 0);
+
+        button.addEventListener("click", function () {
+          // update badge count
+          const currentValue = clickCounts.get(this);
+          const newValue = currentValue + 1;
+          clickCounts.set(this, newValue);
+
+          // show updated badge count
+          const badge = this.querySelector(".badge");
+          badge.textContent = newValue;
+        });
+      });
+    </script>
+  </body>
+</html>
