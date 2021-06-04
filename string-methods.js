@@ -50,8 +50,39 @@ console.log(str3.startsWith("Sat", 3));
  * be a string or a function to be called for each match.
  */
 
-const p =
-  "The quick brown fox jumps over the lazy dog. If the dog reacted, was it really lazy?";
+const p = `The quick brown fox jumps over the lazy dog. If the dog reacted, was it really lazy?`;
 
 console.log(p.replaceAll("dog", "monkey"));
 // expected output: "The quick brown fox jumps over the lazy monkey. If the monkey reacted, was it really lazy?"
+
+/**
+ * String.prototype.padStart()
+ *
+ * The padStart() method pads the current string with another string
+ * (multiple times, if needed) until the resulting string reaches the
+ * given length. The padding is applied from the start of the current string.
+ */
+
+const creditCardNumber = "123412341234";
+const last4Digits = creditCardNumber.slice(-4);
+const maskedNumber = last4Digits.padStart(creditCardNumber.length, "*");
+
+console.log(maskedNumber);
+
+/**
+ * String.prototype.padEnd()
+ *
+ * The padEnd() method pads the current string with a given string
+ * (repeated, if needed) so that the resulting string reaches a
+ * given length. The padding is applied from the end of the current string.
+ */
+
+const str4 = "Breaded Mushrooms";
+
+console.log(str4.padEnd(25, "."));
+// expected output: "Breaded Mushrooms........"
+
+const str5 = "200";
+
+console.log(str5.padEnd(5));
+// expected output: "200  "
