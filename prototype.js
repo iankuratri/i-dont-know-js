@@ -151,7 +151,7 @@ const supermanTwo = new PersonTwo("Superman");
 
 console.log(
   "\n",
-  "Output of PersonOne fn with shared methods (using Prototype):"
+  "Output of PersonTwo fn with shared methods (using Prototype):"
 );
 ankurTwo.sayMyName(); // My name is Ankur.
 batmanTwo.eat("Pizza"); // Batman is eating Pizza.
