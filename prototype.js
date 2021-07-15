@@ -156,3 +156,56 @@ console.log(
 ankurTwo.sayMyName(); // My name is Ankur.
 batmanTwo.eat("Pizza"); // Batman is eating Pizza.
 supermanTwo.sleep(); // Superman is sleeping.
+
+/**
+ * More on Prototypes
+ *
+ * 1. Constructor property
+ * 2. Object.getPrototypeOf()
+ * 3. instance of operator
+ */
+
+/**
+ * Constructor property
+ *
+ * We learnt about the prototype object that is present
+ * on every function (Function.prototype)
+ *
+ * On every function prototype, there is a property called
+ * constructor which points back at the function itself
+ *
+ * A constructor is merely a function from which an object is initiated
+ */
+
+// Shows all functions in protoype object with constrcutor function
+console.log(PersonTwo.prototype);
+
+// Points back to original function
+console.log(PersonTwo.prototype.constructor);
+
+/**
+ * Object.getPrototypeOf()
+ *
+ * Once an Object has been created it is possible to get
+ * hold of the prototype of that object using
+ * Object.getPrototypeOf method
+ */
+
+// Shows all functions in protoype object with constrcutor function (Same as PersonTwo.prototype)
+console.log(Object.getPrototypeOf(ankurTwo));
+
+// Points back to original function (Same as PersonTwo.prototype.constructor)
+console.log(ankurTwo.constructor);
+
+/**
+ * instance of operator
+ *
+ * It is possible to know if an object is an instance of a
+ * constructor function using the instanceof operator
+ */
+
+// returns boolean
+console.log(ankurTwo instanceof PersonTwo);
+
+// how it works under the hood
+console.log(Object.getPrototypeOf(ankurTwo) === PersonTwo.prototype);
