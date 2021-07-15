@@ -209,3 +209,20 @@ console.log(ankurTwo instanceof PersonTwo);
 
 // how it works under the hood
 console.log(Object.getPrototypeOf(ankurTwo) === PersonTwo.prototype);
+
+/**
+ * Object.prototype.hasOwnProperty()
+ *
+ * The hasOwnProperty() method returns a boolean indicating whether the object has
+ * the specified property as its own property (as opposed to inheriting it).
+ */
+
+for (const key in ankurTwo) {
+  const value = ankurTwo[key];
+
+  if (Object.hasOwnProperty.call(ankurTwo, key)) {
+    console.log("Present on object: ", key, value);
+  } else {
+    console.log("Present on prototype: ", key, value);
+  }
+}
