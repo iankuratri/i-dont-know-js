@@ -49,3 +49,42 @@ class Teacher extends Student {
 // instance of Teacher class
 const mosh = new Teacher("Mosh", "Programming");
 mosh.teach();
+
+/**
+ * Calculator chain using classes
+ */
+
+class Calculator {
+  constructor(initialValue = 0) {
+    this.value = initialValue;
+  }
+
+  add(number) {
+    this.value += number;
+    return this;
+  }
+
+  sub(number) {
+    this.value -= number;
+    return this;
+  }
+
+  print() {
+    console.log(this.value);
+  }
+}
+
+class ScientificCalculator extends Calculator {
+  constructor(initialValue = 0) {
+    super(initialValue);
+  }
+
+  square() {
+    this.value *= this.value;
+    return this;
+  }
+}
+
+const s = new ScientificCalculator();
+
+s.add(10).sub(5).square().print();
