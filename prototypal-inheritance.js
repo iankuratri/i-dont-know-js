@@ -50,6 +50,8 @@ rabbit.__proto__ = animal; // sets rabbit.[[Prototype]] = animal
  * For instance:
  */
 
+console.log("\n", "Output of Example 1:");
+
 // we can find both properties in rabbit now:
 console.log(rabbit.eats); // true
 console.log(rabbit.jumps); // true
@@ -72,8 +74,70 @@ Dog.prototype.walk = function () {
 const tommy = new Dog("Tommy", "Golden Retriever");
 const bruno = new Dog("Bruno", "German Shepherd");
 
+console.log("\n", "Output of Example 2:");
+
 console.log(tommy);
 console.log(bruno);
 
 console.log(tommy.bark());
 console.log(bruno.walk());
+
+/** Example 3 */
+
+// Person
+function Person(name) {
+  this.name = name;
+}
+
+Person.prototype.sayMyName = function () {
+  console.log(`My name is ${this.name}.`);
+};
+
+Person.prototype.eat = function (food) {
+  console.log(`${this.name} is eating ${food}.`);
+};
+
+Person.prototype.sleep = function () {
+  console.log(`${this.name} is sleeping.`);
+};
+
+const ankur = new Person("Ankur");
+
+console.log("\n", "Output of Example 3:");
+
+ankur.sayMyName();
+ankur.eat("Pizza");
+ankur.sleep();
+
+// Programmer fn inheriting Person fn
+function Programmer(name, language) {
+  Person.call(this, name);
+  this.language = language;
+}
+
+Programmer.prototype = Object.create(Person.prototype);
+
+Programmer.prototype.code = function () {
+  console.log(`${this.name} codes in ${this.language}.`);
+};
+
+Programmer.prototype.constructor = Programmer;
+
+const vishwas = new Programmer("Vishwas", "JavaScript");
+
+vishwas.sayMyName();
+vishwas.code();
+
+console.log(vishwas.constructor);
+console.log(vishwas instanceof Person);
+console.log(vishwas instanceof Programmer);
+
+/**
+ * Prototype chain
+ *
+ * Each object has a private property which holds a link to another object
+ * called its prototype. That prototype object has a prototype of its own,
+ * and so on until an object is reached with null as its prototype.
+ *
+ * By definition, null has no prototype, and acts as the final link in this prototype chain.
+ */
