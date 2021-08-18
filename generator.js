@@ -1,6 +1,8 @@
 /**
  * Generators
  *
+ * Generators are a special class of functions that simplify the task of writing iterables.
+ *
  * Regular functions return only one, single value (or nothing).
  *
  * Generators can return (“yield”) multiple values, one after another, on-demand.
@@ -104,3 +106,24 @@ const todo = loop(todos);
 console.log(todo.next());
 console.log(todo.next());
 console.log(todo.next());
+
+/**
+ * Exercise - Generators
+ *
+ * Problem:
+ *
+ * Create an iterable which when iterated over with for..of loop will print numbers from 1 to 50
+ */
+
+function* range(start = 1, end = 50, interval = 1) {
+  let counter = start;
+
+  while (counter <= end) {
+    yield counter;
+    counter += interval;
+  }
+}
+
+for (const number of range()) {
+  console.log(number);
+}
