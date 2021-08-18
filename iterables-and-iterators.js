@@ -3,6 +3,8 @@
  * What iterables and iterators are in JavaScript?
  */
 
+// ----------------------------------------------------------------------------------------------
+
 /**
  * 1. Why something like iterables and iterators were introduced?
  *
@@ -77,9 +79,94 @@ do {
  * 2. To iterate in a uniform way across data structures.
  */
 
+// -------------------------------------------------------------------------------------------
+
 /**
  * 2. What exactly is an iterable and an iterator?
  */
+
+/**
+ * In ES6, two new iteration protocols were introduced.
+ *
+ * The iterable protocol and the iterator protocol.
+ *
+ * An object which implements the iterable protocol is called an iterable.
+ *
+ * An object which implements the iterator protocol is called an iterator.
+ *
+ * We have to understand the iterable and the iterator protocol.
+ */
+
+/**
+ * Iterables and iterators in simple terms
+ *
+ * An iterable is a data structure that wants to make its elements accessible to the public.
+ *
+ * An iterator is an object that knows how to access items from a collection one at a time
+ * while keeping track of its current position within that sequence.
+ */
+
+/**
+ * Built-in Iterables
+ *
+ * Strings, arrays, maps and sets are termed as built-in iterables in JavaScript.
+ *
+ * There is a way to access elements one at a time from these data structures.
+ *
+ * How to iterate over these data structures?
+ *
+ * We canont modify the looping constructs we already have.
+ *
+ * A new looping construct, namely a for..of loop would be introduced in ES6.
+ *
+ * for..of loop will be used to iterate over iterables in JavaScript.
+ */
+
+// for..of loop
+
+/**
+ * A for..of loop with a string will iterate over the characters in the string.
+ */
+
+const strOne = "Abc def ghi";
+
+for (const char of strOne) {
+  console.log(char);
+}
+
+/**
+ * A for..of loop with an array will iterate over the items in the array.
+ */
+
+const arrOne = [1, 2, 3, 4, 5];
+
+for (const element of arrOne) {
+  console.log(element);
+}
+
+/**
+ * A for..of loop with a map will iterate over the key/value pairs of the map.
+ */
+
+const groceries = new Map([
+  ["banana", 1],
+  ["orange", 2],
+  ["meat", 4],
+]);
+
+for (const [key, value] of groceries) {
+  console.log(key + " = " + value);
+}
+
+/**
+ * A for..of loop with a set will iterate over the values in the set.
+ */
+
+let fruits = new Set(["oranges", "apples", "bananas"]);
+
+for (let value of fruits) {
+  console.log(value);
+}
 
 /**
  * 3. Implement our own iterable and iterator
