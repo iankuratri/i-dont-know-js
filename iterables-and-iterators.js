@@ -207,3 +207,49 @@ for (let value of fruits) {
 /**
  * 3. Implement our own iterable and iterator
  */
+
+// returns function
+console.log("typeof str[Symbol.iterator]: ", typeof str[Symbol.iterator]);
+
+// returns function
+console.log("typeof arr[Symbol.iterator]: ", typeof arr[Symbol.iterator]);
+
+const person = {
+  name: "Ankur",
+  age: 26,
+};
+
+// returns undefined -> that means an object is not a build in iterable
+console.log("typeof person[Symbol.iterator]: ", typeof person[Symbol.iterator]);
+
+/**
+ * By making our object implement the iterable protocol,
+ * we can make our object into an iterable
+ *
+ * The iterable protocol gives you the possibility
+ * to iterate over nay type of data structure
+ */
+
+// Implementing iterable protocol
+const obj = {
+  [Symbol.iterator]: function () {
+    let step = 0;
+    const iterator = {
+      next: function () {
+        step++;
+        if (step === 1) {
+          return { value: "Hello", done: false };
+        } else if (step === 2) {
+          return { value: "World", done: false };
+        }
+        return { value: undefined, done: true };
+      },
+    };
+    return iterator;
+  },
+};
+
+// Logs 'Hello' 'World'
+for (const iterator of obj) {
+  console.log(iterator);
+}
