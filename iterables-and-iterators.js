@@ -169,5 +169,41 @@ for (let value of fruits) {
 }
 
 /**
+ * Iterable Protocol - Technical details
+ *
+ * This protocol decides if an object is an iterable
+ *
+ * For an object to be an iterable it must implement a method at the key [Symbol.iterator]
+ *
+ * That method should not accept any argument and should return an object which conforms to the iterator protocol.
+ */
+
+/**
+ * [Symbol.iterator]
+ *
+ * [Symbol.iterator], is one of the built-in well-known symbols in ES6
+ *
+ * Symbol.iterator basically guarantees a unique value for your object key which will not
+ * collide with any of the keys that you might mention
+ */
+
+/**
+ * Iterator Protocol - Technical details
+ *
+ * The iterator protocol decides whether an object is an iterator.
+ *
+ * An object is an iterator when it satisfies the following rule:
+ *
+ * The object must have a next() method that returns an object with two properties.
+ * 1. value: which gives the current element
+ * 2. done: which is a boolean value indicating whether or not there are any more
+ * elements that could be iterated upon
+ *
+ * Each time you call the next() method, it returns the next value in the collection
+ * { value: 'next value', done: false } // till the last element has been returned
+ * { value: undefined, done: true } // after the last element has been returned
+ */
+
+/**
  * 3. Implement our own iterable and iterator
  */
