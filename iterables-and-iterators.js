@@ -253,3 +253,44 @@ const obj = {
 for (const iterator of obj) {
   console.log(iterator);
 }
+
+/**
+ * Exercise - Iterables & Iteraters
+ *
+ * Problem statemnt
+ *
+ * Given an object, range, which is an empty object, you job us to make it an iterable.
+ * And the default iteration behaviour when used with a for..of loop is to print numbers from 1 to 50
+ */
+
+const range = {
+  [Symbol.iterator]: function (start = 1, end = 50, interval = 1) {
+    let counter = start;
+
+    const iterator = {
+      next: function () {
+        counter += interval;
+
+        if (counter <= end) {
+          return { value: counter, done: false };
+        }
+        return { done: true };
+      },
+      // This return method is invoked when the iteration is stopped prematurely
+      return: function () {
+        console.log("Cleaning up...");
+        return { done: true };
+      },
+    };
+
+    return iterator;
+  },
+};
+
+// Loogs 1 2 3 ... 50
+for (const number of range) {
+  if (number > 30) {
+    break;
+  }
+  console.log(number);
+}
