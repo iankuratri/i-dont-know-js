@@ -1,4 +1,12 @@
 /**
+ * async await
+ *
+ * The async and await keywords enable asynchronous,
+ * promise-based behaviour to be written in a cleaner style,
+ * avoiding the need to explicitly configure promise chains
+ */
+
+/**
  * async
  *
  * The async keyword is used to declare async functions
