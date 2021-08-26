@@ -134,3 +134,24 @@ async function parallelStart() {
 
 // Total time taken is 2 seconds
 parallelStart();
+
+/**
+ * Exercise - async await
+ *
+ * Problem
+ *
+ * Define a function called sleep which accepts a duration parameter
+ * The sleep function should suspend execution of the function it is invoked in
+ */
+
+function sleep(duration = 0) {
+  return new Promise((resolve) => setTimeout(resolve, duration));
+}
+
+const makePizza = async () => {
+  console.log("I am making a Pizza. It will take 10 seconds.");
+  await sleep(10 * 1000);
+  console.log("Pizza is ready.");
+};
+
+makePizza();
