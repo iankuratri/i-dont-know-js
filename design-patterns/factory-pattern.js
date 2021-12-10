@@ -1,5 +1,6 @@
 /**
  * Creational Pattern - Factory Pattern
+ * https://www.dofactory.com/javascript/design-patterns/factory-method
  *
  * The factory pattern wraps a constructor for different types of objects
  * and returns instances of the objects via a simple API.
