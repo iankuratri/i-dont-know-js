@@ -35,7 +35,7 @@ function AdvancedShipping() {
 // adapter interface
 
 function ShippingAdapter(credentials) {
-  var shipping = new AdvancedShipping();
+  let shipping = new AdvancedShipping();
 
   shipping.login(credentials);
 
@@ -49,13 +49,13 @@ function ShippingAdapter(credentials) {
 }
 
 function run() {
-  var shipping = new Shipping();
-  var credentials = { token: "30a8-6ee1" };
-  var adapter = new ShippingAdapter(credentials);
+  let shipping = new Shipping();
+  let credentials = { token: "30a8-6ee1" };
+  let adapter = new ShippingAdapter(credentials);
 
   // original shipping object and interface
 
-  var cost = shipping.request("78701", "10010", "2 lbs");
+  let cost = shipping.request("78701", "10010", "2 lbs");
   console.log("Old cost: " + cost);
 
   // new shipping object with adapted interface

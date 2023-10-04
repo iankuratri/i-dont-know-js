@@ -18,7 +18,7 @@ For eg: Mongoose (driver for MongoDB)
 
 // input devices
 
-var Gestures = function (output) {
+const Gestures = function (output) {
   this.output = output;
 
   this.tap = function () {
@@ -35,7 +35,7 @@ var Gestures = function (output) {
   };
 };
 
-var Mouse = function (output) {
+const Mouse = function (output) {
   this.output = output;
 
   this.click = function () {
@@ -54,7 +54,7 @@ var Mouse = function (output) {
 
 // output devices
 
-var Screen = function () {
+const Screen = function () {
   this.click = function () {
     console.log("Screen select");
   };
@@ -69,7 +69,7 @@ var Screen = function () {
   };
 };
 
-var Audio = function () {
+const Audio = function () {
   this.click = function () {
     console.log("Sound oink");
   };
@@ -85,11 +85,11 @@ var Audio = function () {
 };
 
 function run() {
-  var screen = new Screen();
-  var audio = new Audio();
+  let screen = new Screen();
+  let audio = new Audio();
 
-  var hand = new Gestures(screen);
-  var mouse = new Mouse(audio);
+  let hand = new Gestures(screen);
+  let mouse = new Mouse(audio);
 
   hand.tap();
   hand.swipe();
